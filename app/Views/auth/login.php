@@ -1,3 +1,4 @@
+<body class="hold-transition login-page">
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="login-box-body">
