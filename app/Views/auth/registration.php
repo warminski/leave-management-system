@@ -2,7 +2,14 @@
 <div class="register-box">
     <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-        <form action="../../index.html" method="post">
+        <?php if (isset($validation)): ?>
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <?= $validation->listErrors() ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        <form action="/registration" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" id="name" name="name" placeholder="Full name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
