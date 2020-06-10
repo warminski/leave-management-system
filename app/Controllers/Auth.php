@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Auth extends BaseController
 {
     public function index()
@@ -27,6 +29,20 @@ class Auth extends BaseController
                 $data['validation'] = $this->validator;
             }
             else{
+
+                $model = new UserModel();
+                $newData = [
+                    'name' => $this ->request->getVar('name'),
+                    'email' => $this ->request->getVar('email'),
+                    'password' => $this ->request->getVar('password'),
+                    'role_id' => 2,
+                    'is_active' => 1,
+                    'image'=>'default.jpg',
+                ];
+                $model->save($newData);
+                $session = session();
+                $session->setFlashdata('success','Succesful Registration');
+                return redirect()->to('/');
 
             }
         }

@@ -2,6 +2,11 @@
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="login-box-body">
+        <?php if (session()->get('success')): ?>
+            <div class="success">
+                <?=session()->get('success')?>
+            </div>
+        <?php endif; ?>
         <p class="login-box-msg">Sign in to start your session</p>
 
         <form action="../../index2.html" method="post">
