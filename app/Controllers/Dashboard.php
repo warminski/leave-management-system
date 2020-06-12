@@ -5,7 +5,11 @@ class Dashboard extends BaseController
 	public function index()
 	{
         $data = [];
-		return view('welcome_message');
+        echo view('templates/auth_header',$data);
+        echo view('/auth/dashboard',$data);
+        echo view('templates/auth_footer',$data);
+
+
 	}
 
 	//--------------------------------------------------------------------

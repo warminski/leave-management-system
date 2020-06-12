@@ -6,41 +6,40 @@ class Auth extends BaseController
 {
     public function index()
     {
-        $data = [];
+        $data=[];
         helper(['form']);
-        if($this->request->getMethod()=="post"){
+        if ($this->request->getMethod()=='post'){
             $rules = [
                 'email' => 'required|min_length[6]|max_length[50]|valid_email',
                 'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
             ];
+
             $errors = [
-                'password'=> [
-                    'validateUser' => 'Email or password don\'t match'
-                ]
-                ];
-                if(!$this->validate($rules,$errors)){
-                    $data['validation'] = $this->validator;
-                }else{
-                    $model = new UserModel();
-                    $user = $model->where('email',$this->request->getVar('email'))
-                                ->first();
-                    $this->setUserSession($user);
-                    return redirect()->to('dashboard');
-                }
+              'password' => [
+                  'validateUser' => 'Email or password don\'t match'
+              ]
+            ];
 
 
-
-
+            if (!$this->validate($rules,$errors)){
+                $data['validation'] = $this->validator;
+            }else{
+                $model = new UserModel();
+                $user = $model->where('email',$this->request->getVar('email'))
+                    ->first();
+                $this->setUserSession($user);
+                return redirect()->to('dashboard');
+            }
         }
-        echo view("templates/auth_header");
+        echo view("templates/auth_header",$data);
         echo view("auth/login");
         echo view("templates/auth_footer");
     }
-    private function setUserSession($user){
+    public function setUserSession($user){
 	    $data = [
 	        'id' => $user['id'],
-	        'name' => $user['firstname'],
-	        'email' => $user['email'],
+	        'name' => $user['name'],
+            'email' => $user['email'],
         ];
 
 	    session()->set($data);
