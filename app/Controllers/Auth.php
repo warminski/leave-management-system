@@ -8,11 +8,44 @@ class Auth extends BaseController
     {
         $data = [];
         helper(['form']);
+        if($this->request->getMethod()=="post"){
+            $rules = [
+                'email' => 'required|min_length[6]|max_length[50]|valid_email',
+                'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
+            ];
+            $errors = [
+                'password'=> [
+                    'validateUser' => 'Email or password don\'t match'
+                ]
+                ];
+                if(!$this->validate($rules,$errors)){
+                    $data['validation'] = $this->validator;
+                }else{
+                    $model = new UserModel();
+                    $user = $model->where('email',$this->request->getVar('email'))
+                                ->first();
+                    $this->setUserSession($user);
+                    return redirect()->to('dashboard');
+                }
+
+
+
+
+        }
         echo view("templates/auth_header");
         echo view("auth/login");
         echo view("templates/auth_footer");
     }
+    private function setUserSession($user){
+	    $data = [
+	        'id' => $user['id'],
+	        'name' => $user['firstname'],
+	        'email' => $user['email'],
+        ];
 
+	    session()->set($data);
+	    return true;
+    }
     public function registration()
     {
         $data = [];
@@ -51,7 +84,10 @@ class Auth extends BaseController
         echo view("auth/registration");
         echo view("templates/auth_footer");
     }
-    
+    public function logout(){
+	    session()->destroy();
+	    return redirect()->to('/');
+    }
 
     //--------------------------------------------------------------------
 
