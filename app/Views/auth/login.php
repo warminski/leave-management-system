@@ -1,23 +1,21 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <!-- /.login-logo -->
-    <div class="login-box-body">
-    <?php if (isset($validation)): ?>
+    <div class="col-12">
+        <?php if (session()->get('success')): ?>
+            <div class="success">
+                <?=session()->get('success')?>
+            </div>
+        <?php endif; ?>
+        <p class="login-box-msg">Sign in to start your session</p>
+        <?php if (isset($validation)): ?>
             <div class="col-12">
                 <div class="alert alert-danger" role="alert">
                     <?= $validation->listErrors() ?>
                 </div>
             </div>
         <?php endif; ?>
-        <p class="login-box-msg">Sign in to start your session</p>
-            <?php if (isset($validation)): ?>
-                        <div class="pure-u-1 alert ">
-                            <div class="errors" role="alert">
-                                <?= $validation->listErrors() ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-        <form action="/" method="post">
+        <form action="../../index2.html" method="post">
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
