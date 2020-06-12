@@ -51,6 +51,7 @@ class Auth extends BaseController
         echo view("auth/registration");
         echo view("templates/auth_footer");
     }
+    
 
     //--------------------------------------------------------------------
 
