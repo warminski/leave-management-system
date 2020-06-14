@@ -9,9 +9,9 @@ class Dashboard extends BaseController
         $data = [];
         $model = new  UserModel();
         $data['user'] = $model->where('id',session()->get('id'))->first();
-        //echo view('templates/auth_header',$data);
+        echo view('templates/dashboard_header',$data);
         echo view('/auth/dashboard',$data);
-        //echo view('templates/auth_footer',$data);
+        echo view('templates/dashboard_footer',$data);
 
 
 	}
