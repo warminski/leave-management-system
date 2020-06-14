@@ -83,9 +83,24 @@
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
-
-
+                                <div class="table-responsive">'
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Leave days</th>
+                                        </tr>
+                                        <?php foreach($rows as $asd): ?>
+                                                <tr>
+                                                    <td><?php echo $asd->name; ?></td>
+                                                    <td><?php echo $asd->email; ?></td>
+                                                    <td><?php echo $asd->leave_days; ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                    </table>
                                 </div>
+
+                            </div>
                                 <!-- /.post -->
                             </div>
                             <!-- /.tab-pane -->
