@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
 $routes->match(['get','post'],'registration', 'Auth::registration');
+$routes->get('logout', 'Auth::logout');
 
 /**
  * --------------------------------------------------------------------

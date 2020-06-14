@@ -1,13 +1,17 @@
 <?php namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Dashboard extends BaseController
 {
 	public function index()
 	{
         $data = [];
-        echo view('templates/auth_header',$data);
+        $model = new  UserModel();
+        $data['user'] = $model->where('id',session()->get('id'))->first();
+        //echo view('templates/auth_header',$data);
         echo view('/auth/dashboard',$data);
-        echo view('templates/auth_footer',$data);
+        //echo view('templates/auth_footer',$data);
 
 
 	}
