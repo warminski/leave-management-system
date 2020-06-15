@@ -79,71 +79,12 @@
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#activity" data-toggle="tab">Employee List </a></li>
-                            <li><a href="#timeline" data-toggle="tab">Calendar</a></li>
-                            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                            <li class="active"><a href="#activity" data-toggle="tab">Calendar</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
-                                <div class="table-responsive">'
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Leave days</th>
-                                        </tr>
-                                        <?php foreach($rows as $asd): ?>
-                                                <tr id="<?php echo $asd->id; ?>">
-                                                    <td data-target="name"><?php echo $asd->name; ?></td>
-                                                    <td data-target="email"><?php echo $asd->email; ?></td>
-                                                    <td data-target="leave_days"><?php echo $asd->leave_days; ?></td>
-                                                    <td class="edit"><a href="#" data-role="update" data-id="<?php echo $asd->id;?>">
-                                                            Edit
-                                                        </a></td>
-                                                </tr>
+                                <h2 class="text-center">Your leave days: <?= $user['leave_days'] ?></h2>
 
-
-                                            <?php endforeach; ?>
-                                    </table>
-                                </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Launch demo modal
-                                </button>
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit user data</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input type="text" id="name" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" id="email" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Leave days</label>
-                                                    <input type="number" id="leave_days" class="form-control">
-                                                </div>
-                                                <input type="hidden" id="userId" class="form-control">
-
-
-
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button id="save" type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                                 <!-- /.post -->

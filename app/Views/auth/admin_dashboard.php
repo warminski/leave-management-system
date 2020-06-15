@@ -202,7 +202,7 @@
     $(document).ready(function(){
         $(document).on('click','a[data-role=update]',function(){
             var id = $(this).data('id');
-            var name = $('#'+id).children('td[data-target=firstname]').text();
+            var name = $('#'+id).children('td[data-target=name]').text();
             var email = $('#'+id).children('td[data-target=email]').text();
             var leave_days = $('#'+id).children('td[data-target=leave_days]').text();
             $('#name').val(name);
