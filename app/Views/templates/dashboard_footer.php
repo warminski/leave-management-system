@@ -10,5 +10,6 @@
 <script src="<?php echo base_url('/assets')?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('/assets')?>/dist/js/demo.js"></script>
+
 </body>
 </html>

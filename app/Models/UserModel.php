@@ -35,4 +35,5 @@ class UserModel extends Model{
 
 
 
+
 }

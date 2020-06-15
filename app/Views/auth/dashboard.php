@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="wrapper">
 
     <header class="main-header">
@@ -95,9 +97,37 @@
                                                     <td><?php echo $asd->name; ?></td>
                                                     <td><?php echo $asd->email; ?></td>
                                                     <td><?php echo $asd->leave_days; ?></td>
+                                                    <td class="edit"><a href="#" data-role="update" data-id="<?php echo $asd->id;?>">
+                                                            Edit
+                                                        </a></td>
                                                 </tr>
+
+
                                             <?php endforeach; ?>
                                     </table>
+                                </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit user data</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+
+
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -126,6 +156,7 @@
         </section>
         <!-- /.content -->
     </div>
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -152,4 +183,11 @@
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
+<script>
+   $(document).ready(function(){
+       $(document).on('click','a[data-role=update]',function(){
+           alert($(this).data('id'));
+       })
+   });
+</script>
 
