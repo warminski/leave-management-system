@@ -28,7 +28,14 @@ class Auth extends BaseController
                 $user = $model->where('email',$this->request->getVar('email'))
                     ->first();
                 $this->setUserSession($user);
-                return redirect()->to('dashboard');
+                if($user['role_id']==1)
+                {
+                    return redirect()->to('admin');
+                }
+                else{
+                    return redirect()->to('dashboard');
+                }
+
             }
         }
         echo view("templates/auth_header",$data);
@@ -40,6 +47,7 @@ class Auth extends BaseController
 	        'id' => $user['id'],
 	        'name' => $user['name'],
             'email' => $user['email'],
+            'role_id'=>$user['role_id'],
         ];
 
 	    session()->set($data);
