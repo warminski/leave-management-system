@@ -93,10 +93,10 @@
                                             <th>Leave days</th>
                                         </tr>
                                         <?php foreach($rows as $asd): ?>
-                                                <tr>
-                                                    <td><?php echo $asd->name; ?></td>
-                                                    <td><?php echo $asd->email; ?></td>
-                                                    <td><?php echo $asd->leave_days; ?></td>
+                                                <tr id="<?php echo $asd->id; ?>">
+                                                    <td data-target="name"><?php echo $asd->name; ?></td>
+                                                    <td data-target="email"><?php echo $asd->email; ?></td>
+                                                    <td data-target="leave_days"><?php echo $asd->leave_days; ?></td>
                                                     <td class="edit"><a href="#" data-role="update" data-id="<?php echo $asd->id;?>">
                                                             Edit
                                                         </a></td>
@@ -106,7 +106,10 @@
                                             <?php endforeach; ?>
                                     </table>
                                 </div>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Launch demo modal
+                                </button>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -116,7 +119,19 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" id="name" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" id="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Leave days</label>
+                                                    <input type="number" id="leave_days" class="form-control">
+                                                </div>
+                                                <input type="hidden" id="userId" class="form-control">
 
 
 
@@ -124,7 +139,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                <button id="save" type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +201,30 @@
 <script>
    $(document).ready(function(){
        $(document).on('click','a[data-role=update]',function(){
-           alert($(this).data('id'));
+           var id = $(this).data('id');
+           var name = $('#'+id).children('td[data-target=firstname]').text();
+           var email = $('#'+id).children('td[data-target=email]').text();
+           var leave_days = $('#'+id).children('td[data-target=leave_days]').text();
+           $('#name').val(name);
+           $('#email').val(email);
+           $('#leave_days').val(leave_days);
+           $('#userId').val(id);
+           $('#myModal').modal('toggle');
+       })
+       $('#save').click(function(){
+           var id = $('#userId').val();
+           var name = $('#name').val();
+           var email = $('#email').val();
+           var leave_days = $('#leave_days').val();
+           $.ajax({
+               url : '<?php echo base_url();?>/connection.php',
+               method : 'post',
+               data : {name : name, email : email, id : id, leave_days : leave_days},
+               success : function(response){
+                   console.log(response);
+               }
+
+           })
        })
    });
 </script>
