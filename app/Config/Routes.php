@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Auth::index');
 $routes->match(['get','post'],'registration', 'Auth::registration');
 $routes->get('logout', 'Auth::logout');
-
+$routes->get('admin_dashboard','AdminDashboard::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

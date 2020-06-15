@@ -30,7 +30,7 @@ class Auth extends BaseController
                 $this->setUserSession($user);
                 if($user['role_id']==1)
                 {
-                    return redirect()->to('admin');
+                    return redirect()->to('admin_dashboard');
                 }
                 else{
                     return redirect()->to('dashboard');
