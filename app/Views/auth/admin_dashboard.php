@@ -225,6 +225,8 @@
                 }
 
             })
+            $('#myModal').modal('toggle');
+            location.reload();
         })
     });
 </script>
