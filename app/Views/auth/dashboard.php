@@ -85,9 +85,32 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
                                 <h2 class="text-center">Your leave days: <?= $user['leave_days'] ?></h2>
-                                <form method="post">
-                                    <input type="submit" name="create_pdf" class="btn btn-danger" value="Create PDF"/>
-                                </form>
+                                <div class="container">
+                                    <div class="row" style="text-align: center">
+                                        <div class='col-sm-4 col-md-offset-4'>
+                                            <div class="form-group" style="text-align: center">
+                                                <h3>Start date</h3>
+                                                <div class='input-group date' id='datepicker1'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                                <h3>End date</h3>
+                                                <div class='input-group date' id='datepicker2'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            <form method="post">
+                                                <input type="submit" name="create_pdf" class="btn btn-danger" value="Generate PDF"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                                 <!-- /.post -->
@@ -170,6 +193,18 @@
 
            })
        })
+       $(function(){
+           $('#datepicker1').datepicker({
+               format: "dd.mm.yyyy",
+           });
+
+           $('#datepicker2').datepicker({
+               format: "dd.mm.yyyy",
+           });
+          
+       });
    });
 </script>
+
+
 
