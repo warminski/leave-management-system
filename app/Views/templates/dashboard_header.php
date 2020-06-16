@@ -1,3 +1,19 @@
+<?php if(isset($_POST['create_pdf']))
+{
+    ob_start();
+    ?>
+    <h1>Data from form</h1>
+    <p>Name: <?php echo $user['name'];?></p>
+    <p>Email: <?php echo $user['email'];?></p>
+    <?php
+    $body = ob_get_clean();
+    $pdf = new TCPDF();
+    $pdf->AddPage();
+    $pdf->WriteHTML($body);
+    $pdf->Output('generate.pdf','D');
+
+}?>
+
 <!DOCTYPE html>
 <html>
 <head>

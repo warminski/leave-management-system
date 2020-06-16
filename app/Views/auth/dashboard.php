@@ -1,3 +1,4 @@
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="wrapper">
@@ -84,7 +85,9 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
                                 <h2 class="text-center">Your leave days: <?= $user['leave_days'] ?></h2>
-
+                                <form method="post">
+                                    <input type="submit" name="create_pdf" class="btn btn-danger" value="Create PDF"/>
+                                </form>
 
                             </div>
                                 <!-- /.post -->
