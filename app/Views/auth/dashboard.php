@@ -88,21 +88,21 @@
                                 <div class="container">
                                     <div class="row" style="text-align: center">
                                         <div class='col-sm-4 col-md-offset-4'>
-
+                                            <form method="post">
                                             <div class="form-group"  style="text-align: center">
                                                 <h3>Start date</h3>
                                                 <div class='input-group date' id='datepicker1'>
-                                                    <form method="post">
+
                                                     <input type='text' name="datepicker1" class="form-control" />
 
-                                                    <span class="input-group-addon">
+                                                    <span class="input-group-addon" style="visibility: hidden">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
                                                 </div>
                                                 <h3>End date</h3>
                                                 <div class='input-group date' id='datepicker2'>
                                                     <input type='text' name="datepicker2" class="form-control" />
-                                                    <span class="input-group-addon">
+                                                    <span class="input-group-addon" style="visibility: hidden">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
                                                 </div>
