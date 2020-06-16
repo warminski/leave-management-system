@@ -1,18 +1,57 @@
-<?php if(isset($_POST['create_pdf']))
-{
-    ob_start();
-    ?>
-    <h1>Data from form</h1>
-    <p>Name: <?php echo $user['name'];?></p>
-    <p>Email: <?php echo $user['email'];?></p>
-    <?php
-    $body = ob_get_clean();
-    $pdf = new TCPDF();
-    $pdf->AddPage();
-    $pdf->WriteHTML($body);
-    $pdf->Output('generate.pdf','D');
+<?php
+if(isset($_POST['create_pdf'])){
+    if(isset($_POST['datepicker1'])) {
+        $date1 = $_POST['datepicker1'];
+        $date2 = $_POST['datepicker2'];
+        $date1time = strtotime($date1);
+        $date2time = strtotime($date2);
+        $datediff = $date2time - $date1time;
+        ob_start();?>
+        <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <table style="width: 713px;">
+        <tbody>
+        <tr>
+            <td style="width: 285px;">Imie i nazwisko pracownika</td>
+            <td style="width: 432px;">miejscowosc, data zlozenia podania</td>
+        </tr>
+        </tbody>
+    </table>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: right;">nazwa i nip firmy</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: center;"><strong>WNIOSEK</strong></p>
+    <p style="text-align: center;">Zwracam sie z prosba o udzielenie urlopu</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">w okresie od <?php echo $date1?> do <?php echo $date2?>, tj <?php echo round($datediff / (60 * 60 * 24)); ?> dni roboczych.</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: right;">podpis pracownika</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: center;"><strong>WYRAZAM ZGODE / NIE WYRAZAM ZGODY* na udzielenie urlopu w w.w.terminie</strong></p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: right;">&nbsp;</p>
+    <p style="text-align: right;">podpis pracodawcy</p>
 
-}?>
+
+    <?php
+           $body = ob_get_clean();
+            $pdf = new TCPDF();
+            $pdf->AddPage();
+            $pdf->WriteHTML($body);
+            $pdf->Output('wniosek.pdf','D');
+
+    }
+}
+?>
+
+
 
 <!DOCTYPE html>
 <html>
