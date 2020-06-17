@@ -23,7 +23,7 @@ if(isset($_POST['create_pdf'])){
     <p style="text-align: center;"><strong>WNIOSEK</strong></p>
     <p style="text-align: center;">Zwracam sie z prosba o udzielenie urlopu</p>
     <p style="text-align: center;">&nbsp;</p>
-    <p style="text-align: center;">w okresie od <?php echo $date1?> do <?php echo $date2?>, tj <?php echo $to->diffInWeekendDays($from) ?> dni roboczych.</p>
+    <p style="text-align: center;">w okresie od <?php echo $date1?> do <?php echo $date2?>, tj <?php echo $to->diffInWeekDays($from) ?> dni roboczych.</p>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
