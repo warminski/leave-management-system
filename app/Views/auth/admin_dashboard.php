@@ -145,22 +145,19 @@
 
                             </div>
                             <!-- /.post -->
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="timeline">
 
-                        </div>
-                        <!-- /.tab-pane -->
-
-                        <div class="tab-pane" id="settings">
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="timeline">
+                                <h1>azxccsd</h1>
 
 
-                        </div>
-                        <!-- /.tab-pane -->
-                    </div>
-                    <!-- /.tab-content -->
-                </div>
-                <!-- /.nav-tabs-custom -->
+
+                            <div class="tab-pane" id="settings">
+
+
+
+                            </div>
+
             </div>
             <!-- /.col -->
     </div>
