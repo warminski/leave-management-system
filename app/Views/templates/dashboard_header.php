@@ -85,7 +85,6 @@ if(isset($_POST['create_pdf'])){
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url('/assets')?>/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="<?php echo base_url('/assets')?>/style.css"
-    esheet" />
 
 
 

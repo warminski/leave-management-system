@@ -1,8 +1,36 @@
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<script type="text/javascript" src="<?php echo base_url('/scripts')?>/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url('/scripts')?>/bootstrap.min.js"></script>
-<script src="<?php echo base_url('/scripts')?>/daypilot/daypilot-all.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php echo base_url('/scripts')?>/schedule.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="<?php /*/*echo base_url('/scripts')*/?>/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<?php /*/*echo base_url('/scripts')*/?>/bootstrap.min.js"></script>-->
+<link rel="stylesheet" href="<?php echo base_url('/assets')?>/rescalendar.css">
+<style>
+
+    body{
+        text-align: center;
+    }
+
+    h1{
+        text-align: left;
+        margin: 30px 0 100px 30px;
+    }
+
+    h4{
+        margin: 60px 0 10px 60px;
+    }
+
+    .wrapper{
+        width: 100%;
+        text-align: center;
+    }
+
+    .greenClass{
+        background: green;
+    }
+
+    .blueClass{
+        background: blue;
+    }
+
+</style>
 <div class="wrapper">
 
     <header class="main-header">
@@ -151,7 +179,7 @@
 
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="timeline">
-                                <div id="dp"></div>
+                                <div class="rescalendar" id="my_calendar_en"></div>
 
 
 
@@ -202,6 +230,10 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<?php echo base_url('/scripts')?>/moment.js"></script>
+<script src="<?php echo base_url('/scripts')?>/rescalendar.js"></script>
+<script src="<?php echo base_url('/scripts')?>/calendar.js"></script>
 <script>
     $(document).ready(function(){
         $(document).on('click','a[data-role=update]',function(){
