@@ -3,9 +3,8 @@ if(isset($_POST['create_pdf'])){
     if(isset($_POST['datepicker1'])) {
         $date1 = $_POST['datepicker1'];
         $date2 = $_POST['datepicker2'];
-        $date1time = strtotime($date1);
-        $date2time = strtotime($date2);
-        $datediff = $date2time - $date1time;
+        $from = Carbon\Carbon::parse($date1);
+        $to = Carbon\Carbon::parse($date2);
         ob_start();?>
         <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -24,7 +23,7 @@ if(isset($_POST['create_pdf'])){
     <p style="text-align: center;"><strong>WNIOSEK</strong></p>
     <p style="text-align: center;">Zwracam sie z prosba o udzielenie urlopu</p>
     <p style="text-align: center;">&nbsp;</p>
-    <p style="text-align: center;">w okresie od <?php echo $date1?> do <?php echo $date2?>, tj <?php echo round($datediff / (60 * 60 * 24)); ?> dni roboczych.</p>
+    <p style="text-align: center;">w okresie od <?php echo $date1?> do <?php echo $date2?>, tj <?php echo $to->diffInWeekendDays($from) ?> dni roboczych.</p>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
