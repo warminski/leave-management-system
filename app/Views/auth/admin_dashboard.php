@@ -1,5 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="<?php echo base_url('/scripts')?>/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('/scripts')?>/bootstrap.min.js"></script>
+<script src="<?php echo base_url('/scripts')?>/daypilot/daypilot-all.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo base_url('/scripts')?>/schedule.js"></script>
 <div class="wrapper">
 
     <header class="main-header">
@@ -85,7 +88,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
-                                <div class="table-responsive">'
+                                <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <tr>
                                             <th>Name</th>
@@ -148,7 +151,13 @@
 
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="timeline">
-                                <h1>azxccsd</h1>
+                                <div id="dp"></div>
+
+
+
+
+
+
 
 
 
