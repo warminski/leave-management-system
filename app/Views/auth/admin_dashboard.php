@@ -49,6 +49,9 @@ $asdasd = array_values($dbdatanames);
     .blueClass{
         background: blue;
     }
+    .dataCell{
+        border: 1px solid black;
+    }
 
 </style>
 <div class="wrapper">
@@ -132,7 +135,7 @@ $asdasd = array_values($dbdatanames);
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#activity" data-toggle="tab">Employee List </a></li>
                             <li><a href="#timeline" data-toggle="tab">Calendar</a></li>
-                            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                            <li><a href="#settings" data-toggle="tab">Add new leave</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
@@ -201,7 +204,7 @@ $asdasd = array_values($dbdatanames);
                             <div class="tab-pane" id="timeline">
                                 <div class="rescalendar" id="my_calendar_en"></div>
 
-
+                            </div>
 
 
 
@@ -210,12 +213,28 @@ $asdasd = array_values($dbdatanames);
 
 
                             <div class="tab-pane" id="settings">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Select user
+                                        <form method="post">
+                                            <select class="form-control" name="userName">
+                                                <?php
+
+                                                foreach($leaves as $row)
+                                                {
+                                                    echo '<option value="'.$row->name.'">'.$row->name.'</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </form>
+                                    </div>
+                                </div>
 
 
 
                             </div>
 
-            </div>
+
             <!-- /.col -->
     </div>
     <!-- /.row -->
