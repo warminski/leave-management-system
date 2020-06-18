@@ -1,6 +1,26 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?php /*/*echo base_url('/scripts')*/?>/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<?php /*/*echo base_url('/scripts')*/?>/bootstrap.min.js"></script>-->
+<?php
+$dblink = mysqli_connect('localhost','root','','leave_system');
+$all = "SELECT user.id,name,startDate,endDate,customClass FROM leaves,user WHERE user.id = leaves.user_id";
+$result = mysqli_query($dblink,$all);
+$dbdata = array();
+$names = "SELECT name FROM user,leaves WHERE user.id = leaves.user_id";
+$result2 = mysqli_query($dblink,$names);
+$dbdatanames = array();
+while ( $row = $result->fetch_assoc())  {
+    $dbdata[]=$row;
+}
+while ( $row = $result2->fetch_assoc()) {
+
+    $dbdatanames[] = $row['name'];
+
+}
+
+$asdasd = array_values($dbdatanames);
+
+?>
 <link rel="stylesheet" href="<?php echo base_url('/assets')?>/rescalendar.css">
 <style>
 
@@ -266,4 +286,28 @@
         })
     });
 </script>
+<script>
+    $(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
 
+        today = yyyy+ '-' + mm + '-' + dd;
+        $('#my_calendar_en').rescalendar({
+            id: 'my_calendar_en',
+            format: 'YYYY-MM-DD',
+            refDate: today,
+            jumpSize: 10,
+            disabledDays: ['2020-01-01','2020-01-06','2020-04-12','2020-04-13','2020-05-01','2020-05-03','2020-05-31','2020-06-11','2020-08-15','2020-11-11','2020-12-25','2020-12-26','2021-01-01','2021-01-06','2021-04-04','2021-04-05','2021-05-01','2021-05-03','2021-05-23','2021-06-03','2021-08-15','2021-11-01','2021-11-11','2021-12-25','2021-12-26'],
+            disabledWeekDays: [0,6],
+            data: <?php echo json_encode($dbdata) ?>,
+
+            /*dataKeyField: 'id',
+            dataKeyValues: ['item1', 'item2', 'item3','item4','item5']*/
+            dataKeyField: 'id',
+            dataKeyValues: <?php echo json_encode($asdasd) ?>
+
+        });
+    });
+</script>
