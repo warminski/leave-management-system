@@ -51,6 +51,10 @@ $asdasd = array_values($dbdatanames);
     .dataCell{
         border: 1px solid black;
     }
+    td, th{
+        border: 1px solid black;
+        padding: 3px;
+    }
 
 </style>
 <div class="wrapper">
