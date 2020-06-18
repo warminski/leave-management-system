@@ -6,7 +6,7 @@ $dblink = mysqli_connect('localhost','root','','leave_system');
 $all = "SELECT user.id,name,startDate,endDate,customClass FROM leaves,user WHERE user.id = leaves.user_id";
 $result = mysqli_query($dblink,$all);
 $dbdata = array();
-$names = "SELECT name FROM user,leaves WHERE user.id = leaves.user_id";
+$names = "SELECT name FROM user,leaves WHERE user.id = leaves.user_id GROUP BY name";
 $result2 = mysqli_query($dblink,$names);
 $dbdatanames = array();
 while ( $row = $result->fetch_assoc())  {
