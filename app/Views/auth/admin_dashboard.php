@@ -19,17 +19,6 @@ while ( $row = $result2->fetch_assoc()) {
 }
 
 $asdasd = array_values($dbdatanames);
-if (isset($_POST["startDate"]))
-{
-    $user = $_POST["startDate"];
-    echo $user;
-    echo " is your username";
-}
-else
-{
-    $user = null;
-    echo "no username supplied";
-}
 ?>
 <link rel="stylesheet" href="<?php echo base_url('/assets')?>/rescalendar.css">
 <style>
