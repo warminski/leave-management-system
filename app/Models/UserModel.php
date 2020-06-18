@@ -32,6 +32,10 @@ class UserModel extends Model{
         //print_r($query->getResult());
         return $query->getResult();
     }
+    function getAll(){
+        $query = $this->db->query('SELECT user.id,user.name FROM user');
+        return $query->getResult();
+    }
 
 
 

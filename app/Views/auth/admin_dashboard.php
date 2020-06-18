@@ -19,7 +19,17 @@ while ( $row = $result2->fetch_assoc()) {
 }
 
 $asdasd = array_values($dbdatanames);
-
+if (isset($_POST["startDate"]))
+{
+    $user = $_POST["startDate"];
+    echo $user;
+    echo " is your username";
+}
+else
+{
+    $user = null;
+    echo "no username supplied";
+}
 ?>
 <link rel="stylesheet" href="<?php echo base_url('/assets')?>/rescalendar.css">
 <style>
@@ -217,17 +227,41 @@ $asdasd = array_values($dbdatanames);
                                     <div class="col-md-4">
                                         Select user
                                         <form method="post">
-                                            <select class="form-control" name="userName">
+                                            <select id="user_id" name="user_id" class="form-control">
                                                 <?php
 
                                                 foreach($leaves as $row)
                                                 {
-                                                    echo '<option value="'.$row->name.'">'.$row->name.'</option>';
+                                                    echo '<option value="'.$row->id.'">'.$row->id.'.'.$row->name.'</option>';
                                                 }
                                                 ?>
                                             </select>
-                                        </form>
+
                                     </div>
+                                    <div class="col-md-4">
+                                        Select start date
+                                        <div class='input-group date' id='datepicker1'>
+
+                                            <input type='text' id="startDate" name="startDate" class="form-control" />
+
+                                            <span class="input-group-addon" style="visibility: hidden">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        Select end date
+                                        <div class='input-group date' id='datepicker2'>
+
+                                            <input type='text' id="endDate" name="endDate" class="form-control" />
+
+                                            <span class="input-group-addon" style="visibility: hidden">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <input id="zapisz" type="submit" name="create_leave" class="btn btn-danger" value="Create leave"/>
+                                    </form>
                                 </div>
 
 
@@ -303,6 +337,20 @@ $asdasd = array_values($dbdatanames);
             $('#myModal').modal('toggle');
             location.reload();
         })
+        $('form').submit(function(){
+            var user_id = parseInt(document.getElementById("user_id").value);
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            $.ajax({
+                url : '<?php echo base_url();?>/connection2.php',
+                method : 'post',
+                data : {user_id : user_id, startDate : startDate, endDate : endDate},
+                success : function(response){
+                    console.log(response);
+                }
+
+            })
+        })
     });
 </script>
 <script>
@@ -327,6 +375,15 @@ $asdasd = array_values($dbdatanames);
             dataKeyField: 'id',
             dataKeyValues: <?php echo json_encode($asdasd) ?>
 
+        });
+    });
+    $(function(){
+        $('#datepicker1').datepicker({
+            format: "yyyy-mm-dd",
+        });
+
+        $('#datepicker2').datepicker({
+            format: "yyyy-mm-dd",
         });
     });
 </script>

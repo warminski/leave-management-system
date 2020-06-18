@@ -2,11 +2,9 @@
 use CodeIgniter\Model;
 
 class LeaveModel extends Model{
-    protected $table = 'user';
-    function getAll(){
-        $query = $this->db->query('SELECT name FROM user');
-        return $query->getResult();
-    }
+    protected $table = 'leaves';
+    protected $allowedFields = ['user_id','startDate','endDate'];
+
 
 
 }

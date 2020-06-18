@@ -172,33 +172,6 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <script>
-   $(document).ready(function(){
-       $(document).on('click','a[data-role=update]',function(){
-           var id = $(this).data('id');
-           var name = $('#'+id).children('td[data-target=firstname]').text();
-           var email = $('#'+id).children('td[data-target=email]').text();
-           var leave_days = $('#'+id).children('td[data-target=leave_days]').text();
-           $('#name').val(name);
-           $('#email').val(email);
-           $('#leave_days').val(leave_days);
-           $('#userId').val(id);
-           $('#myModal').modal('toggle');
-       })
-       $('#save').click(function(){
-           var id = $('#userId').val();
-           var name = $('#name').val();
-           var email = $('#email').val();
-           var leave_days = $('#leave_days').val();
-           $.ajax({
-               url : '<?php echo base_url();?>/connection.php',
-               method : 'post',
-               data : {name : name, email : email, id : id, leave_days : leave_days},
-               success : function(response){
-                   console.log(response);
-               }
-
-           })
-       })
        $(function(){
            $('#datepicker1').datepicker({
                format: "dd.mm.yyyy",
@@ -208,7 +181,6 @@
                format: "dd.mm.yyyy",
            });
        });
-   });
 </script>
 
 
