@@ -219,7 +219,7 @@ $asdasd = array_values($dbdatanames);
                                 <div class="row">
                                     <div class="col-md-4">
                                         Select user
-                                        <form method="post">
+                                        <form method="post" action="AdminDashboard">
                                             <select id="user_id" name="user_id" class="form-control">
                                                 <?php
 
@@ -253,7 +253,7 @@ $asdasd = array_values($dbdatanames);
                                                     </span>
                                         </div>
                                     </div>
-                                    <input id="zapisz" type="submit" name="create_leave" class="btn btn-danger" value="Create leave" style="margin-top: 10px"/>
+                                    <input id="zapisz" type="submit" name="create_leave" class="btn btn-primary" value="Create leave" style="margin-top: 10px"/>
                                     </form>
                                 </div>
 
