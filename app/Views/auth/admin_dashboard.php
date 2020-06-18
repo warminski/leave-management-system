@@ -253,7 +253,7 @@ $asdasd = array_values($dbdatanames);
                                                     </span>
                                         </div>
                                     </div>
-                                    <input id="zapisz" type="submit" name="create_leave" class="btn btn-danger" value="Create leave"/>
+                                    <input id="zapisz" type="submit" name="create_leave" class="btn btn-danger" value="Create leave" style="margin-top: 10px"/>
                                     </form>
                                 </div>
 
