@@ -17,6 +17,19 @@ while ( $row = $result2->fetch_assoc()) {
     $dbdatanames[] = $row['name'];
 
 }
+if(isset($_POST['create_leave']))
+{
+    $userid = $_POST['user_id'];
+    $date1 = $_POST['startDate'];
+    $date2 = $_POST['endDate'];
+    $from = Carbon\Carbon::parse($date1);
+    $to = Carbon\Carbon::parse($date2);
+    $diff = $to->diffInWeekDays($from);
+    $query = "UPDATE user SET leave_days=leave_days-'$diff' WHERE id = '$userid' ";
+    mysqli_query($dblink,$query);
+}
+
+
 
 $asdasd = array_values($dbdatanames);
 ?>
@@ -169,12 +182,12 @@ $asdasd = array_values($dbdatanames);
                                             <th>Email</th>
                                             <th>Leave days</th>
                                         </tr>
-                                        <?php foreach($rows as $asd): ?>
-                                            <tr id="<?php echo $asd->id; ?>">
-                                                <td data-target="name"><?php echo $asd->name; ?></td>
-                                                <td data-target="email"><?php echo $asd->email; ?></td>
-                                                <td data-target="leave_days"><?php echo $asd->leave_days; ?></td>
-                                                <td class="edit"><a href="#" data-role="update" data-id="<?php echo $asd->id;?>">
+                                        <?php foreach($rows as $userdata): ?>
+                                            <tr id="<?php echo $userdata->id; ?>">
+                                                <td data-target="name"><?php echo $userdata->name; ?></td>
+                                                <td data-target="email"><?php echo $userdata->email; ?></td>
+                                                <td data-target="leave_days"><?php echo $userdata->leave_days; ?></td>
+                                                <td class="edit"><a href="#" data-role="update" data-id="<?php echo $userdata->id;?>">
                                                         Edit
                                                     </a></td>
                                             </tr>
@@ -322,6 +335,7 @@ $asdasd = array_values($dbdatanames);
 <script src="<?php echo base_url('/scripts')?>/calendar.js"></script>
 <script>
     $(document).ready(function(){
+
         $(document).on('click','a[data-role=update]',function(){
             var id = $(this).data('id');
             var name = $('#'+id).children('td[data-target=name]').text();
@@ -399,4 +413,9 @@ $asdasd = array_values($dbdatanames);
             format: "yyyy-mm-dd",
         });
     });
+</script>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
