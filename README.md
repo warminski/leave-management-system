@@ -13,9 +13,9 @@ It should look like this:
 
 4) Edit following lines to make them look like this: 
 
-`DocumentRoot "F:/xampp/htdocs/leave-management-system/public"
+`DocumentRoot "F:/xampp/htdocs/leave-management-system/public"`
 
-<Directory "F:/xampp/htdocs/leave-management-system/public">`
+`<Directory "F:/xampp/htdocs/leave-management-system/public">`
 
 5) Start Apache server and MySQL
 
