@@ -29,4 +29,4 @@ It should look like this:
 
 ## Usage
 
-For full usage see the Userguide.docx file
+For full usage see the UserGuide.pdf file
